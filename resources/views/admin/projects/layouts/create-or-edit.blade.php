@@ -35,6 +35,21 @@
                     @enderror
                 </div>
                 <div class="mb-3">
+                    <select class="form-select" aria-label="Default select example" name="category_id">
+                        @foreach ($categories as $category)
+                            <option value="{{$category->id}}">
+                                {{$category->id == old('category_id', $project->category_id)? "selected" : "" }}
+                                {{$category->name}}
+                            </option>
+                        @endforeach
+                    </select>
+                    @error("category_id")
+                        <div class="alert alert-danger mb-3">
+                            {{$message}}
+                        </div>
+                    @enderror
+                </div>
+                <div class="mb-3">
                     <label for="content">Content:</label>
                     <textarea type="text" name="content" id="content" class="form-control" rows="10" class="form-control">{{ old('content', $project->content)}}</textarea>
                     @error("content")
