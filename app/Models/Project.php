@@ -12,6 +12,7 @@ class Project extends Model
     use SoftDeletes;
 
     protected $fillable = [
+        'category_id',
         'title',
         'author',
         'content',
