@@ -37,8 +37,8 @@
                 <div class="mb-3">
                     <select class="form-select" aria-label="Default select example" name="category_id">
                         @foreach ($categories as $category)
-                            <option value="{{$category->id}}">
-                                {{$category->id == old('category_id', $project->category_id)? "selected" : "" }}
+                            <option value="{{$category->id}}"
+                                {{$category->id == old('category_id', $project->category_id)? "selected" : "" }}>
                                 {{$category->name}}
                             </option>
                         @endforeach
