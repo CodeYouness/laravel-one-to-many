@@ -1,12 +1,12 @@
 @extends('admin.categories.layouts.create-or-edit')
 
 @section('page-title')
-    Create new post
+    Create new category
 @endsection
 
 
 @section('form-action')
-    {{route('admin.projects.store')}}
+    {{route('admin.categories.store')}}
 @endsection
 
 @section('form-method')

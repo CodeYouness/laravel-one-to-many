@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Controllers\AdminCategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,5 +26,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::middleware('auth')->name('admin.')->prefix('/admin')->group(function(){
     Route::resource('/projects', ProjectController::class);
+    Route::resource('/categories', CategoryController::class);
     }
 );
