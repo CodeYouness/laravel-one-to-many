@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class CategoryController extends Controller
 {
@@ -23,7 +24,7 @@ class CategoryController extends Controller
     public function create()
     {
         $category = new Category();
-        return view('admin.categories.index', compact('category'));
+        return view('admin.categories.create', compact('category'));
     }
 
     /**
@@ -31,7 +32,14 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        $data = $request->validate([
+            'name' => 'required|string|min:2|max:50|unique:categories',
+            'color' => 'required|hex_color'
+        ]);
+
+        $category = Category::create($data);
+
+        return redirect()->route('admin.categories.show', $category);
     }
 
     /**
@@ -45,17 +53,24 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $category)
+    public function edit(Category $category)
     {
-        return view('admin.categories.index', compact('categories'));
+        return view('admin.categories.edit', compact('category'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Category $category)
     {
-        dd($request->all());
+        $data = $request->validate([
+            'name' => ['required', 'string', 'min:2', 'max:50', Rule::unique('categories')->ignore($category->id)],
+            'color' => 'required|hex_color',
+        ]);
+
+        $category->update($data);
+
+        return redirect()->route('admin.categories.show', $category);
     }
 
     /**
@@ -63,6 +78,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        dd($category);
+        $category->delete();
+        return redirect()->route('admin.categories.index');
     }
 }

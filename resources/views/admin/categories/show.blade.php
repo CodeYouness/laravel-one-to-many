@@ -1,5 +1,9 @@
 @extends('layouts.admin')
 
+@section("page-title")
+    {{$category->name}}
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -19,9 +23,9 @@
             </ul>
             <p>{{$category->content}}</p>
             <div class="card-footer">
-                <a href="{{route('admin.categories.index', $project )}}" class="btn btn-primary btn-sm">Return to categories list</a>
-                <a href="{{route('admin.categories.edit', $project )}}" class="btn btn-success btn-sm">Edit</a>
-                <form action="{{route('admin.categories.destroy', $project )}}" method="POST" class="d-inline-block form-destroyer" data-post-title="{{$category->title}}">
+                <a href="{{route('admin.categories.index', $category )}}" class="btn btn-primary btn-sm">Return to categories list</a>
+                <a href="{{route('admin.categories.edit', $category )}}" class="btn btn-success btn-sm">Edit</a>
+                <form action="{{route('admin.categories.destroy', $category )}}" method="POST" class="d-inline-block form-destroyer" data-post-title="{{$category->title}}">
                     @method('delete')
                     @csrf
                     <input type="submit" class="btn btn-warning btn-sm" value="Delete">

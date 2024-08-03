@@ -1,7 +1,7 @@
 @extends('admin.categories.layouts.create-or-edit')
 
 @section('page-title')
-    Editing {{$category->title}}
+    Editing {{$category->name}}
 @endsection
 
 

@@ -18,7 +18,7 @@
                     @foreach ($projects as $project)
                         <tr>
                             <td>{{$project->id}}</td>
-                            <td>{{$project->category->name}}</td>
+                            <td>{{ ($project->category) ? $project->category->name : '----'}}</td>
                             <td>{{$project->author}}</td>
                             <td>{{$project->title}}</td>
                             <td>{{$project->date}}</td>

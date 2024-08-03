@@ -15,10 +15,10 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="title">Category name:</label>
-                    <input type="text" name="title" id="title" class="form-control mb-3"
+                    <label for="name">Category name:</label>
+                    <input type="text" name="name" id="name" class="form-control mb-3"
                     value="{{ old('name', $category->name)}}">
-                    @error("title")
+                    @error("name")
                         <div class="alert alert-danger mb-3">
                             {{$message}}
                         </div>
@@ -26,7 +26,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="color">Color</label>
-                    <input type="color" name="image" id="image" class="form-control mb-3"
+                    <input type="color" name="color" id="color" class="form-control mb-3"
                     value="{{ old('color', $category->color)}}">
                     @error("color")
                         <div class="alert alert-danger mb-3">

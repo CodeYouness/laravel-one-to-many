@@ -1,5 +1,9 @@
 @extends('layouts.admin')
 
+@section("page-title")
+    List of all projects categories
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
