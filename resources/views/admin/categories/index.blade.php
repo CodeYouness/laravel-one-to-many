@@ -18,11 +18,11 @@
                             <td>{{$category->id}}</td>
                             <td>{{$category->name}}</td>
                             <td>{{$category->color}}</td>
-                            <td>{{count($category->posts)}}</td>
+                            <td>{{count($category->projects)}}</td>
                             <td>
-                                <a href="{{route('admin.category.show', $category )}}" class="btn btn-primary btn-sm">Show</a>
-                                <a href="{{route('admin.category.edit', $category )}}" class="btn btn-success btn-sm">Edit</a>
-                                <form action="{{route('admin.category.destroy', $category )}}" method="POST" class="d-inline-block form-destroyer" data-post-title="{{$category->title}}">
+                                <a href="{{route('admin.categories.show', $category )}}" class="btn btn-primary btn-sm">Show</a>
+                                <a href="{{route('admin.categories.edit', $category )}}" class="btn btn-success btn-sm">Edit</a>
+                                <form action="{{route('admin.categories.destroy', $category )}}" method="POST" class="d-inline-block form-destroyer" data-post-title="{{$category->title}}">
                                     @method('delete')
                                     @csrf
                                     <input type="submit" class="btn btn-warning btn-sm" value="Delete">
@@ -32,7 +32,7 @@
                     @endforeach
             </tbody>
         </table>
-        {{$category->links();}}
+        {{$categories->links();}}
     </div>
 </div>
 @endsection

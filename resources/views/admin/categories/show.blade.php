@@ -21,7 +21,7 @@
             <div class="card-footer">
                 <a href="{{route('admin.categories.index', $project )}}" class="btn btn-primary btn-sm">Return to categories list</a>
                 <a href="{{route('admin.categories.edit', $project )}}" class="btn btn-success btn-sm">Edit</a>
-                <form action="{{route('admin.categories.destroy', $project )}}" method="POST" class="d-inline-block form-destroyer" data-post-title="{{$categories->title}}">
+                <form action="{{route('admin.categories.destroy', $project )}}" method="POST" class="d-inline-block form-destroyer" data-post-title="{{$category->title}}">
                     @method('delete')
                     @csrf
                     <input type="submit" class="btn btn-warning btn-sm" value="Delete">

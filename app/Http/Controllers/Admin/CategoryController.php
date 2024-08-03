@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -12,7 +13,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category
+        $categories = Category::paginate(20);
+        return view('admin.categories.index', compact('categories'));
     }
 
     /**
@@ -20,7 +22,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        $category = new Category();
+        return view('admin.categories.index', compact('category'));
     }
 
     /**
@@ -28,23 +31,23 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->all());
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Category $category)
     {
-        //
+        return view('admin.categories.show', compact('category'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $category)
     {
-        //
+        return view('admin.categories.index', compact('categories'));
     }
 
     /**
@@ -52,14 +55,14 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        dd($request->all());
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Category $category)
     {
-        //
+        dd($category);
     }
 }

@@ -11,6 +11,14 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav me-auto">
 
+                @if (Route::has('admin.categories.index'))
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('admin.categories.index')}}">
+                            {{__('Categories')}}
+
+                        </a>
+                    </li>
+                @endif
                 @if (Route::has('admin.projects.index'))
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('admin.projects.index')}}">
@@ -23,6 +31,14 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('admin.projects.create')}}">
                             {{__('Create new post')}}
+
+                        </a>
+                    </li>
+                @endif
+                @if (Route::has('admin.categories.create'))
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('admin.categories.create')}}">
+                            {{__('Create new category')}}
 
                         </a>
                     </li>
