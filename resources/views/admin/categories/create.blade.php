@@ -1,4 +1,4 @@
-@extends('admin.projects.layouts.create-or-edit')
+@extends('admin.categories.layouts.create-or-edit')
 
 @section('page-title')
     Create new post

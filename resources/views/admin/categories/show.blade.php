@@ -4,22 +4,24 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-12">
-            <h1>{{$project->id}} : {{$project->author}}</h1>
-            @if ($project->category)
+            <h1>{{$category->id}} : {{$category->name}}</h1>
 
-            <h2 class="d-inline-block px-3 rounded" style="background: {{$project->category->color}}">{{$project->category->name}}</h2>
+            <h2 class="d-inline-block px-3 rounded" style="background: {{$category->color}}">{{$category->name}}</h2>
+            <ul>
+                @foreach ($category->projects as $project)
+                <li>
+                    <a href="{{route('admin.projects.show', $project)}}">
+                        {{$project->title}} - {{$project->author}}
+                    </a>
+                </li>
 
-            @endif
-            <h3>{{$project->title}}</h3>
-            <h3>{{$project->date}}</h3>
-            <div class="img">
-                <img src="{{$project->image}}" alt="{{$project->author}}" class="img-fluid">
-            </div>
-            <p>{{$project->content}}</p>
+                @endforeach
+            </ul>
+            <p>{{$category->content}}</p>
             <div class="card-footer">
-                <a href="{{route('admin.projects.index', $project )}}" class="btn btn-primary btn-sm">Return to list</a>
-                <a href="{{route('admin.projects.edit', $project )}}" class="btn btn-success btn-sm">Edit</a>
-                <form action="{{route('admin.projects.destroy', $project )}}" method="POST" class="d-inline-block form-destroyer" data-post-title="{{$project->title}}">
+                <a href="{{route('admin.categories.index', $project )}}" class="btn btn-primary btn-sm">Return to categories list</a>
+                <a href="{{route('admin.categories.edit', $project )}}" class="btn btn-success btn-sm">Edit</a>
+                <form action="{{route('admin.categories.destroy', $project )}}" method="POST" class="d-inline-block form-destroyer" data-post-title="{{$categories->title}}">
                     @method('delete')
                     @csrf
                     <input type="submit" class="btn btn-warning btn-sm" value="Delete">
